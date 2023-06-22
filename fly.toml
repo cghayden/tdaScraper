@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for tda on 2023-06-21T12:29:59-04:00
+# fly.toml app configuration file generated for tdacron on 2023-06-22T11:13:39-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "tda"
+app = "tdacron"
 primary_region = "bos"
 
 [http_service]
@@ -16,9 +16,8 @@ primary_region = "bos"
 [processes]
   # The command below is used to launch a Rails server; be sure to
   # replace with the command you're using to launch your server.
-  # web = "bin/rails fly:server"
-  cron = "supercronic crontab"
+  web = "node index.js"
+  cron = "supercronic /app/crontab"
 
-# Make sure there's only one `processes` entry under `[[services]]`
-# [[services]]
-#   processes = ["web"]
+  [[services]]
+  processes = ["web"]

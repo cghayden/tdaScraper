@@ -1,1 +1,1 @@
-*/5 * * * * node runScraper.js
+*/2 * * * * node index.js

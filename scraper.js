@@ -37,10 +37,4 @@ export async function scrapeTDA() {
     console.log('no appts')
   }
   await browser.close()
-
-  // fs.writeFile(, (err) => {
-  //   if (err) {
-  //     console.log(err)
-  //   }
-  // })
 }
