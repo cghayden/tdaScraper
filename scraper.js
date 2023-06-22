@@ -3,25 +3,20 @@ import * as puppeteer from 'puppeteer'
 import twilioClient from './twilio.js'
 
 export async function scrapeTDA() {
+  console.log(`checking for appts... at ${Date.now()}`)
   const browser = await puppeteer.launch({ headless: 'new' })
   const page = await browser.newPage()
   await page.goto(
     'https://www.tds.ms/CentralizeSP/Student/Login/teachersdrivingacademy'
   )
   await page.click('#username')
-  await page.keyboard.type('Hay47431')
+  await page.keyboard.type(process.env.TDA_USERNAME)
   await page.click('#password')
-  await page.keyboard.type('34956647')
+  await page.keyboard.type(process.env.TDA_PASSWORD)
   await Promise.all([
     page.click('.form-actions button'),
     page.waitForNavigation(),
   ])
-  // await Promise.all([
-  //   page.click(
-  //     '#div_QuickLinks > div > div:nth-child(1) > div:nth-child(1) > a > button'
-  //   ),
-  //   page.waitForNavigation(),
-  // ])
   await page.goto(
     'https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1'
   )
