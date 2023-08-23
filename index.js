@@ -1,4 +1,4 @@
-import 'dotenv/config'
-import { scrapeTDA } from './scraper.js'
+require('dotenv').config()
+const scrapeTDA = require('./scraper.js')
 
 scrapeTDA()

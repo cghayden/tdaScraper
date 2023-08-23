@@ -1,8 +1,7 @@
-import * as puppeteer from 'puppeteer'
+const puppeteer = require('puppeteer')
+const twilioClient = require('./twilio')
 
-import twilioClient from './twilio.js'
-
-export async function scrapeTDA() {
+async function scrapeTDA() {
   const browser = await puppeteer.launch({ headless: 'new' })
   try {
     const page = await browser.newPage()
@@ -20,7 +19,6 @@ export async function scrapeTDA() {
     await page.goto(
       'https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1'
     )
-    // await page.screenshot({ path: 'availableAppts.png', fullPage: true })
 
     const availableAppointments = await page.$$('#btnSelectAppt')
     if (availableAppointments.length) {
@@ -41,3 +39,5 @@ export async function scrapeTDA() {
     await browser.close()
   }
 }
+
+module.exports = { scrapeTDA }
