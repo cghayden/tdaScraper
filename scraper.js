@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-const twilioClient = require('./twilio')
+const { twilioClient } = require('./twilio')
 
 async function scrapeTDA() {
   const browser = await puppeteer.launch({ headless: 'new' })
